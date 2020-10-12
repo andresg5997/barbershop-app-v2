@@ -1,0 +1,12 @@
+{
+  "name": "barbershop-app",
+  "displayName": "barbershop-app",
+  "expo": {
+    "name": "barbershop-app",
+    "slug": "barbershop-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
