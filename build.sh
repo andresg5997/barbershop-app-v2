@@ -2,6 +2,7 @@ SALON_ID=$1
 API_URL=$2
 
 # if 1 parameter then is SALON_URL
+# if 2 parameter then is SALON_ID & API_URL
 
 if [ -z "$SALON_ID" ]
 then
@@ -11,8 +12,10 @@ fi
 
 if [ -z "$API_URL" ]
 then
-  sed -ie "1s/.*/const salonUrl = '$SALON_ID';/" ./imports.js
+  sed -ie "1s/.*/const salonUrl = '$SALON_ID';/" ./app/utils/imports.js
 else
-  sed -ie "2s/.*/const salonId = '$SALON_ID';/" ./imports.js
-  sed -ie "3s/.*/const apiUrl = '$API_URL';/" ./imports.js
+  sed -ie "2s/.*/const salonId = '$SALON_ID';/" ./app/utils/imports.js
+  sed -ie "3s/.*/const apiUrl = '$API_URL';/" ./app/utils/imports.js
 fi
+
+node ./app/utils/appLogo.js

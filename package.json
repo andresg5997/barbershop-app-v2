@@ -15,6 +15,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "app-icon": "^0.13.2",
     "axios": "^0.20.0",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
