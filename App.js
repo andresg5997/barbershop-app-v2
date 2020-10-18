@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { WebView } from 'react-native-webview';
-import axios from 'axios';
-import { Text } from 'react-native';
-import { apiUrl, salonId, salonUrl } from './imports';
+import { ActivityIndicator } from 'react-native';
+import { salonUrl } from './imports';
 
 export default function App() {
-  const [selectedSalonUrl, setSelectedSalonUrl] = useState(salonUrl);
-
-  useEffect(() => {
-    // fetchSalonData();
-    setSelectedSalonUrl(salonUrl);
-  }, []);
-
-  // const fetchSalonData = async () => {
-  //   const url = `${apiUrl}GetSalonByGuid?guid=${salonId}`;
-
-  //   try {
-  //     const res = await axios.get(url);
-  //     setSelectedSalonUrl(res.data.Url);
-  //     return res.data;
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  //   return {};
-  // };
-
-  return <WebView source={{ selectedSalonUrl }} />;
+  return (
+    <WebView
+      source={{ uri: salonUrl }}
+      startInLoadingState
+      renderLoading={() => <ActivityIndicator />}
+      onError={(syntheticEvent) => {
+        const { nativeEvent } = syntheticEvent;
+        console.warn('WebView error: ', nativeEvent);
+      }}
+    />
+  );
 }
