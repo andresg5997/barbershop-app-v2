@@ -1,9 +1,9 @@
 {
-  "name": "barbershop-app",
-  "displayName": "barbershop-app",
+  "name": "Hilgensoft",
+  "displayName": "Hilgensoft",
   "expo": {
-    "name": "barbershop-app",
-    "slug": "barbershop-app",
+    "name": "Hilgensoft",
+    "slug": "Hilgensoft",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
