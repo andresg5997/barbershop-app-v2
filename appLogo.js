@@ -4,5 +4,5 @@ console.log('bLYAT');
 
 Promise.resolve()
   .then(() => appIcon.generate({
-    sourceIcon: '../beban-logo.png',
+    sourceIcon: './beban-logo.png',
   }));

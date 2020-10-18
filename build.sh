@@ -12,10 +12,10 @@ fi
 
 if [ -z "$API_URL" ]
 then
-  sed -ie "1s/.*/const salonUrl = '$SALON_ID';/" ./app/utils/imports.js
+  sed -ie "1s/.*/const salonUrl = '$SALON_ID';/" ./imports.js
 else
-  sed -ie "2s/.*/const salonId = '$SALON_ID';/" ./app/utils/imports.js
-  sed -ie "3s/.*/const apiUrl = '$API_URL';/" ./app/utils/imports.js
+  sed -ie "2s/.*/const salonId = '$SALON_ID';/" ./imports.js
+  sed -ie "3s/.*/const apiUrl = '$API_URL';/" ./imports.js
 fi
 
-node ./app/utils/appLogo.js
+node ./appLogo.js
