@@ -1,4 +1,4 @@
-package com.barbershopapp;
+package com.barbershopbebanapp;
 
 import android.os.Bundle;
 

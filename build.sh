@@ -19,3 +19,5 @@ else
 fi
 
 node ./appLogo.js
+
+npm run build_bundle
