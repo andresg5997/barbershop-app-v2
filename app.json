@@ -8,5 +8,10 @@
     "assetBundlePatterns": [
       "**/*"
     ]
+  },
+  "splash": {
+    "image": "./splashscreen.png",
+    "backgroundColor": "#FFFFFF",
+    "resizeMode": "cover"
   }
 }
