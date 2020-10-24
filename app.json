@@ -1,17 +1,12 @@
 {
-  "name": "Hilgensoft",
-  "displayName": "Hilgensoft",
+  "name": "barbershop-app",
+  "displayName": "barbershop-app",
   "expo": {
-    "name": "Hilgensoft",
-    "slug": "Hilgensoft",
+    "name": "barbershop-app",
+    "slug": "barbershop-app",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
-  },
-  "splash": {
-    "image": "./splashscreen.png",
-    "backgroundColor": "#FFFFFF",
-    "resizeMode": "cover"
   }
 }

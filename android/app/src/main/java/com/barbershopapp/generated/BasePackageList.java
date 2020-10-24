@@ -1,4 +1,4 @@
-package com.barbershopbebanapp.generated;
+package com.barbershopapp.generated;
 
 import java.util.Arrays;
 import java.util.List;

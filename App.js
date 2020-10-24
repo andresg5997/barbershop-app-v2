@@ -1,12 +1,11 @@
-import React from 'react';
 import { WebView } from 'react-native-webview';
+import React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { salonUrl } from './imports';
 
 export default function App() {
   return (
     <WebView
-      source={{ uri: salonUrl }}
+      source={{ uri: 'https://beban-barber-shop-2.de' }}
       startInLoadingState
       renderLoading={() => <ActivityIndicator />}
       onError={(syntheticEvent) => {
