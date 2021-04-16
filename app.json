@@ -1,9 +1,9 @@
 {
-  "name": "barbershop-app",
-  "displayName": "barbershop-app",
+  "name": "Beban Barber Shop 2.0",
+  "displayName": "Beban Barber Shop 2.0",
   "expo": {
-    "name": "barbershop-app",
-    "slug": "barbershop-app",
+    "name": "Beban Barber Shop 2.0",
+    "slug": "Beban Barber Shop 2.0",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
