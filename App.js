@@ -1,7 +1,7 @@
 import { WebView } from 'react-native-webview';
 import React from 'react';
 import { ActivityIndicator, StyleSheet, SafeAreaView, Text } from 'react-native';
-import PushNotification, { PushNotificationObject } from 'react-native-push-notification';
+import PushNotification from 'react-native-push-notification';
 const injectedJS = `
 window.addEventListener('sendData', function() {
   const res = localStorage.getItem('PUSH_NOTIFICATION')
@@ -15,12 +15,11 @@ export default function App() {
 
     setTimeout(() => {
       PushNotification.getScheduledLocalNotifications((data) => {
-        console.log(JSON.stringify(data))
+        console.log(data)
       });
     }, 2500);
     
     const { nativeEvent } = e;
-    console.log("🚀 ~ file: App.js ~ line 23 ~ runNotificationTimer ~ nativeEvent", nativeEvent)
 
     const form = JSON.parse(nativeEvent.data);
 
@@ -32,8 +31,6 @@ export default function App() {
         stylistName
       }
     } = form;
-
-    console.log("🚀 ~ file: App.js ~ line 31 ~ runNotificationTimer ~ form", form)
 
     PushNotification.localNotificationSchedule({
       channelId: "your-great-notification",
@@ -63,6 +60,8 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <WebView
+        cacheMode={'LOAD_NO_CACHE'}
+        cacheEnabled={false}
         injectedJavaScript={ injectedJS }
         source={{ uri: 'http://10.0.2.2:9000/' }}
         startInLoadingState
