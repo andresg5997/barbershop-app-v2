@@ -1,22 +1,41 @@
-import { registerRootComponent } from 'expo';
+/**
+ * @format
+ */
 
+import {AppRegistry} from 'react-native';
 import App from './App';
+import {name as appName} from './app.json';
 
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
+
+PushNotification.configure({
+  onNotification: function (notification) {
+    if (notification.foreground) {
+      PushNotification.localNotification({
+        title: notification.title,
+        message: notification.message,
+      });
+    }
+
+    notification.finish(PushNotificationIOS.FetchResult.NoData);
+  },
+  permissions: {
+    alert: true,
+    badge: true,
+    sound: true,
+  },
+  popInitialNotification: true,
+  requestPermissions: true,
+});
 
 PushNotification.createChannel(
   {
-    channelId: "your-great-notification", // (required)
-    channelName: "My channel", // (required)
-    channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
-    soundName: "default", // (optional) See `soundName` parameter of `localNotification` function
-    importance: 4, // (optional) default: 4. Int value of the Android notification importance
-    vibrate: true, // (optional) default: true. Creates the default vibration patten if true.
+    channelId: 'barbershopapp-notification', // (required)
+    channelName: 'Barbershopapp Notification Channel', // (required)
+    soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function
   },
-  (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
+  created => console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
 );
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in the Expo client or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+AppRegistry.registerComponent(appName, () => App);
