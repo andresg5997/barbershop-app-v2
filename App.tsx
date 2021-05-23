@@ -1,4 +1,4 @@
-import {WebView, WebViewMessageEvent} from 'react-native-webview';
+import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import React from 'react';
 import {
   ActivityIndicator,
