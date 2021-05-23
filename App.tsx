@@ -53,7 +53,7 @@ export default function App() {
           cacheMode={'LOAD_NO_CACHE'}
           cacheEnabled={false}
           injectedJavaScript={injectedJS}
-          source={{uri: 'http://demosalon.hilgensoft.de/'}}
+          source={{uri: 'https://beban-barber-shop-2.de/'}}
           startInLoadingState
           renderLoading={() => <ActivityIndicator />}
           onError={(syntheticEvent: WebViewErrorEvent) => {
