@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 import { PushNotificationData } from './src/types/PushNotificationData';
+import { WebViewErrorEvent } from 'react-native-webview/lib/WebViewTypes';
 
 const injectedJS = `
 window.addEventListener('PUSH_NOTIFICATION', function() {
@@ -20,20 +21,6 @@ window.addEventListener('PUSH_NOTIFICATION', function() {
 export default function App() {
 
   const runNotificationTimer = (e: WebViewMessageEvent) => {
-    for (let index = 0; index < 7; index++) {
-      setTimeout(() => {
-          console.log(index);
-      }, index * 1000);
-    }
-
-    setTimeout(() => {
-      PushNotification.localNotification({
-        title: 'dalyed title',
-        message: 'dalyed message',
-      });
-  }, 7000);
-
-
     const { nativeEvent } = e;
 
     const form = JSON.parse(nativeEvent.data) as PushNotificationData;
@@ -47,21 +34,14 @@ export default function App() {
       date: new Date(Date.now() + 1 * 1000),
     });
 
-    PushNotification.localNotificationSchedule({
-      channelId: 'barbershopapp-notification',
-      title: 'new title',
-      message: "new message",
-      date: new Date(Date.now() + (7 * 1000)),
+    nextNotifications.forEach((notification) => {
+      PushNotification.localNotificationSchedule({
+        channelId: 'barbershopapp-notification',
+        title: notification.title,
+        message: notification.message,
+        date: new Date(Date.now() + (notification.remainingMinutes * 60) * 1000),
+      });
     });
-
-    // nextNotifications.forEach((notification) => {
-    //   PushNotification.localNotificationSchedule({
-    //     channelId: 'barbershopapp-notification',
-    //     title: notification.title,
-    //     message: notification.message,
-    //     date: new Date(Date.now() + (notification.remainingMinutes * 60) * 1000),
-    //   });
-    // });
   };
 
   return (
@@ -76,7 +56,7 @@ export default function App() {
           source={{uri: 'http://demosalon.hilgensoft.de/'}}
           startInLoadingState
           renderLoading={() => <ActivityIndicator />}
-          onError={syntheticEvent => {
+          onError={(syntheticEvent: WebViewErrorEvent) => {
             const {nativeEvent} = syntheticEvent;
             console.warn('WebView error: ', nativeEvent);
           }}
