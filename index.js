@@ -26,7 +26,7 @@ PushNotification.configure({
     sound: true,
   },
   popInitialNotification: true,
-  requestPermissions: true,
+  requestPermissions: Platform.OS === 'ios',
 });
 
 PushNotification.createChannel(

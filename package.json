@@ -3,11 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "react-native start",
+    "emu": "start-android-emulator",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "web": "expo start --web",
+    "build_app": "sh build.sh",
+    "build_install": "cd android/ && ./gradlew installRelease",
+    "build_bundle": "cd android/ && ./gradlew bundleRelease",
+    "build_assemble": "cd android/ && ./gradlew assembleRelease",
+    "build_test": "react-native run-android --variant=release",
+    "gradlew_clean": "cd android/ && ./gradlew clean",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "fix-app": "echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && watchman shutdown-server"
   },
   "dependencies": {
     "@react-native-community/push-notification-ios": "1.8.0",
@@ -30,6 +39,7 @@
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
     "react-test-renderer": "17.0.1",
+    "start-android-emulator": "^1.1.0",
     "typescript": "4.2.4"
   },
   "jest": {
